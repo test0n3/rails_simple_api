@@ -47,13 +47,38 @@ The REST service must expose the **/products** endpoint, which allows for managi
 
 ## Execution
 ### Requirements
-- docker-compose
+- docker-compose v 1.29.2+
+
+Usage of docker requires some changes in the system, like adding the user to the docker group
 
 ### Running the server
 ```
 docker-compose build
 docker-compose run web rake db:create
+docker-compose run web rake db:migrate
 docker-compose up
 ```
+### Seeding the database
+```
+docker-compose run web rake db:seed
+```
+
+### Cleaning the database
+```
+docker-compose run web rake db:drop
+docker-compose run web rake db:create
+docker-compose run web rake db:migrate
+```
+### Stoping docker
+After shutting down the rails `ctrl + c`:
+```
+docker-compose down
+```
+
+### Using the API
+Require tools [Insomnia](https://insomnia.rest/download)
+
+
+
 This project was created using this instructions: [Docker Docs: Quickstart, composer and rails](https://docs.docker.com/samples/rails/)
 

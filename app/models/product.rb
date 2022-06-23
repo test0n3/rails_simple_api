@@ -1,12 +1,12 @@
 class Product < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }
   validates :vendor, length: { maximum: 100 }
-  # validates :price, presence: true, numericality: { only_integer: true }
-  validate :correct_price
+  validates :price, presence: true, numericality: { only_integer: true }
+  # validate :correct_price
   # validates :currency, presence: true
   validate :correct_currency
-  # validates :stock, presence: true
-  validate :correct_stock
+  validates :stock, presence: true, numericality: { only_integer: true }
+  # validate :correct_stock
 
 
   private
